@@ -21,13 +21,13 @@ my-plugin/
 Add JS dependencies:
 
 ```sh
-npm add -D vite @kucrut/vite-for-wp
+npm add -D vite @southcoastweb/vite-for-wp
 ```
 
 Create `vite.config.js`:
 
 ```js
-import create_config from '@kucrut/vite-for-wp';
+import create_config from '@southcoastweb/vite-for-wp';
 
 export default create_config( 'js/src/main.ts', 'js/dist' );
 ```
@@ -36,7 +36,7 @@ If you have multiple entrypoints to build, pass an object as the first parameter
 
 ```js
 // vite.config.js
-import create_config from '@kucrut/vite-for-wp';
+import create_config from '@southcoastweb/vite-for-wp';
 
 export default create_config(
 	{
@@ -53,7 +53,7 @@ Pass a [configuration object](https://vitejs.dev/config/) as the third parameter
 // vite.config.js
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import create_config from '@kucrut/vite-for-wp';
+import create_config from '@southcoastweb/vite-for-wp';
 import react from '@vitejs/plugin-react';
 
 export default create_config( 'js/src/main.ts', 'js/dist', {
@@ -84,17 +84,17 @@ Lastly, add `dev` and `build` scripts to your `package.json`:
 Add the composer dependency:
 
 ```sh
-composer require kucrut/vite-for-wp
+composer require southcoastweb/vite-for-wp
 ```
 
-If your plugin/theme doesn't use composer, feel free to copy [the main file](https://github.com/kucrut/vite-for-wp/blob/main/vite-for-wp.php) and require it.
+If your plugin/theme doesn't use composer, feel free to copy [the main file](https://github.com/south-coast-web/vite-for-wp/blob/main/vite-for-wp.php) and require it.
 
 Enqueue the script:
 
 ```php
 <?php
 
-use Kucrut\Vite;
+use SouthCoastWeb\Vite;
 
 add_action( 'wp_enqueue_scripts', function (): void {
 	Vite\enqueue_asset(
@@ -130,8 +130,8 @@ npm add -D rollup-plugin-external-globals
 
 ```js
 // vite.config.js
-import { wp_globals } from '@kucrut/vite-for-wp/utils';
-import create_config from '@kucrut/vite-for-wp';
+import { wp_globals } from '@southcoastweb/vite-for-wp/utils';
+import create_config from '@southcoastweb/vite-for-wp';
 import external_globals from 'rollup-plugin-external-globals';
 
 export default create_config( 'js/src/main.ts', 'js/dist', {
