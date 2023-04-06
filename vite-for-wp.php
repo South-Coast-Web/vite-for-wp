@@ -7,7 +7,7 @@
 
 declare( strict_types=1 );
 
-namespace Kucrut\Vite;
+namespace Southcoastweb\Vite;
 
 use Exception;
 
@@ -348,7 +348,7 @@ function parse_options( array $options ): array {
  * @return string
  */
 function prepare_asset_url( string $dir ) {
-	$url = apply_filters('vite_for_wp__asset_url', content_url(str_replace(WP_CONTENT_DIR, '', $dir)))
+	$url = apply_filters('vite_for_wp__asset_url', content_url(str_replace(WP_CONTENT_DIR, '', $dir)));
 	$url_matches_pattern = preg_match( '/(?<address>http(?:s?):\/\/.*\/)(?<fullPath>wp-content(?<removablePath>\/.*)\/(?:plugins|themes)\/.*)/', $url, $url_parts );
 
 	if ( $url_matches_pattern === 0 ) {
