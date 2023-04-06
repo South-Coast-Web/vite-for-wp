@@ -270,6 +270,15 @@ function load_production_asset( object $manifest, string $entry, array $options 
 		'styles' => [],
 	];
 	$item = $manifest->data->{$entry};
+	
+	// If the vite build has a compiled CSS file in the manifest, append it to the entry file
+	if (!empty($manifest->data->{'style.css'})) {
+		// If there's no CSS object for the entry file, create it
+		if (empty($item->css)) $item->css = (object) [];
+		// Add the stylesheet URL to the entry CSS stack
+		$item->css->{'style.css'} = $manifest->data->{'style.css'}->file;
+	}
+	
 	$src = "{$url}/{$item->file}";
 
 	if ( ! $options['css-only'] ) {
